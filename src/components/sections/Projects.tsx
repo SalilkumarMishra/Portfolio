@@ -1,6 +1,9 @@
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Eye, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Projects() {
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
     const projects = [
         {
             title: 'Nexus Health',
@@ -54,9 +57,18 @@ export default function Projects() {
                                     <Github className="w-5 h-5" />
                                 </a>
                                 {project.link !== '#' && (
-                                    <a href={project.link} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors">
-                                        <ExternalLink className="w-5 h-5" />
-                                    </a>
+                                    <>
+                                        <button 
+                                            onClick={() => setPreviewUrl(project.link)} 
+                                            className="text-[#555] hover:text-white transition-colors cursor-pointer" 
+                                            title="Live Preview"
+                                        >
+                                            <Eye className="w-5 h-5" />
+                                        </button>
+                                        <a href={project.link} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors" title="Open Link">
+                                            <ExternalLink className="w-5 h-5" />
+                                        </a>
+                                    </>
                                 )}
                             </div>
                         </div>
@@ -75,6 +87,55 @@ export default function Projects() {
                     </div>
                 ))}
             </div>
+
+            {/* Live Preview Modal */}
+            {previewUrl && (
+                <div 
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm transition-all duration-300 animate-in fade-in zoom-in-95"
+                    onClick={() => setPreviewUrl(null)}
+                >
+                    <div 
+                        className="relative w-full max-w-6xl h-[85vh] bg-[#121212] border border-[#333] rounded-2xl overflow-hidden shadow-2xl shadow-black/50 flex flex-col"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        {/* Browser-like Header */}
+                        <div className="flex justify-between items-center px-4 py-3 border-b border-[#333] bg-[#1a1a1a]">
+                            <div className="flex items-center gap-4">
+                                <div className="flex gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <div className="bg-black/50 px-3 py-1 rounded-md border border-[#333]">
+                                    <span className="text-xs font-mono text-[#888]">{previewUrl}</span>
+                                </div>
+                            </div>
+                            <button 
+                                onClick={() => setPreviewUrl(null)} 
+                                className="text-[#888] hover:text-white bg-[#222] hover:bg-[#333] p-1 rounded-md transition-colors cursor-pointer"
+                            >
+                                <X className="w-4 h-4" />
+                            </button>
+                        </div>
+                        
+                        {/* Iframe Container */}
+                        <div className="flex-1 w-full bg-[#0a0a0a] relative">
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div className="flex flex-col items-center gap-3">
+                                    <div className="w-6 h-6 border-2 border-[#555] border-t-white rounded-full animate-spin"></div>
+                                    <span className="text-[#555] font-mono text-sm">Loading Preview...</span>
+                                </div>
+                            </div>
+                            <iframe 
+                                src={previewUrl} 
+                                className="absolute inset-0 w-full h-full border-0 relative z-10 bg-white"
+                                title="Project Preview"
+                                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
