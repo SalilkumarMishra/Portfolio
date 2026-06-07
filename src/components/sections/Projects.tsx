@@ -38,12 +38,39 @@ export default function Projects() {
                 <span className="text-[#333] font-mono text-xl">#</span>
             </div>
 
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {projects.map((project, i) => (
-                    <div key={i} className="card-bg p-6 group">
+                    <div key={i} className="card-bg p-6 group flex flex-col h-full">
+                        {/* Inline Iframe Preview */}
+                        {project.link !== '#' && (
+                            <div 
+                                className="w-full h-48 mb-6 rounded-xl overflow-hidden relative border border-[#333] group-hover:border-[#555] transition-colors cursor-pointer"
+                                onClick={() => setPreviewUrl(project.link)}
+                            >
+                                <div className="absolute inset-0 z-20 hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium backdrop-blur-md shadow-xl transition-transform hover:scale-105">
+                                        <Eye className="w-4 h-4" /> Expand Preview
+                                    </div>
+                                </div>
+                                <div className="absolute inset-0 z-0 flex items-center justify-center bg-[#0a0a0a]">
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-5 h-5 border-2 border-[#555] border-t-white rounded-full animate-spin"></div>
+                                    </div>
+                                </div>
+                                <iframe
+                                    src={project.link}
+                                    className="absolute top-0 left-0 w-[400%] h-[400%] origin-top-left scale-[0.25] border-0 z-10 pointer-events-none bg-white"
+                                    title={`${project.title} preview`}
+                                    sandbox="allow-same-origin allow-scripts"
+                                    tabIndex={-1}
+                                    loading="lazy"
+                                />
+                            </div>
+                        )}
+
                         <div className="flex justify-between items-start mb-4">
                             <div className="flex items-center gap-4">
-                                <div className={`w-10 h-10 rounded-lg border flex items-center justify-center ${project.icon}`}>
+                                <div className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${project.icon}`}>
                                     <span className="font-mono font-bold text-sm tracking-tighter">
                                         {project.title.substring(0, 2).toUpperCase()}
                                     </span>
@@ -53,27 +80,18 @@ export default function Projects() {
                                 </h3>
                             </div>
                             <div className="flex gap-3">
-                                <a href={project.github} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors">
+                                <a href={project.github} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors" onClick={e => e.stopPropagation()}>
                                     <Github className="w-5 h-5" />
                                 </a>
                                 {project.link !== '#' && (
-                                    <>
-                                        <button 
-                                            onClick={() => setPreviewUrl(project.link)} 
-                                            className="text-[#555] hover:text-white transition-colors cursor-pointer" 
-                                            title="Live Preview"
-                                        >
-                                            <Eye className="w-5 h-5" />
-                                        </button>
-                                        <a href={project.link} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors" title="Open Link">
-                                            <ExternalLink className="w-5 h-5" />
-                                        </a>
-                                    </>
+                                    <a href={project.link} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors" title="Open Link" onClick={e => e.stopPropagation()}>
+                                        <ExternalLink className="w-5 h-5" />
+                                    </a>
                                 )}
                             </div>
                         </div>
 
-                        <p className="text-[#888] text-sm leading-relaxed mb-6">
+                        <p className="text-[#888] text-sm leading-relaxed mb-6 flex-1">
                             {project.description}
                         </p>
 
