@@ -1,4 +1,4 @@
-import { Github, ExternalLink, Eye, X } from 'lucide-react';
+import { Github, ExternalLink, X, Maximize2 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Projects() {
@@ -38,78 +38,83 @@ export default function Projects() {
                 <span className="text-[#333] font-mono text-xl">#</span>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-4">
                 {projects.map((project, i) => (
-                    <div key={i} className="card-bg p-6 group flex flex-col h-full">
-                        {/* Inline Iframe Preview */}
+                    <div key={i} className="card-bg overflow-hidden group">
+                        {/* Site Preview Thumbnail */}
                         {project.link !== '#' && (
                             <div 
-                                className="w-full h-48 mb-6 rounded-xl overflow-hidden relative border border-[#333] group-hover:border-[#555] transition-colors cursor-pointer"
+                                className="relative w-full h-[220px] overflow-hidden border-b border-[#222222] cursor-pointer"
                                 onClick={() => setPreviewUrl(project.link)}
                             >
-                                <div className="absolute inset-0 z-20 hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium backdrop-blur-md shadow-xl transition-transform hover:scale-105">
-                                        <Eye className="w-4 h-4" /> Expand Preview
-                                    </div>
+                                {/* Loading spinner behind the iframe */}
+                                <div className="absolute inset-0 z-0 flex items-center justify-center bg-[#0e0e0e]">
+                                    <div className="w-5 h-5 border-2 border-[#333] border-t-[#888] rounded-full animate-spin"></div>
                                 </div>
-                                <div className="absolute inset-0 z-0 flex items-center justify-center bg-[#0a0a0a]">
-                                    <div className="flex flex-col items-center gap-2">
-                                        <div className="w-5 h-5 border-2 border-[#555] border-t-white rounded-full animate-spin"></div>
-                                    </div>
-                                </div>
+                                {/* Scaled iframe */}
                                 <iframe
                                     src={project.link}
-                                    className="absolute top-0 left-0 w-[400%] h-[400%] origin-top-left scale-[0.25] border-0 z-10 pointer-events-none bg-white"
+                                    className="absolute top-0 left-0 w-[1440px] h-[900px] border-0 z-10 pointer-events-none bg-white"
+                                    style={{ transform: 'scale(0.5)', transformOrigin: 'top left' }}
                                     title={`${project.title} preview`}
                                     sandbox="allow-same-origin allow-scripts"
                                     tabIndex={-1}
                                     loading="lazy"
                                 />
+                                {/* Hover overlay */}
+                                <div className="absolute inset-0 z-20 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium border border-white/20">
+                                        <Maximize2 className="w-4 h-4" /> Expand Preview
+                                    </div>
+                                </div>
                             </div>
                         )}
 
-                        <div className="flex justify-between items-start mb-4">
-                            <div className="flex items-center gap-4">
-                                <div className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${project.icon}`}>
-                                    <span className="font-mono font-bold text-sm tracking-tighter">
-                                        {project.title.substring(0, 2).toUpperCase()}
-                                    </span>
+                        {/* Card Content */}
+                        <div className="p-6">
+                            <div className="flex justify-between items-start mb-4">
+                                <div className="flex items-center gap-4">
+                                    <div className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${project.icon}`}>
+                                        <span className="font-mono font-bold text-sm tracking-tighter">
+                                            {project.title.substring(0, 2).toUpperCase()}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">
+                                        {project.title}
+                                    </h3>
                                 </div>
-                                <h3 className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">
-                                    {project.title}
-                                </h3>
-                            </div>
-                            <div className="flex gap-3">
-                                <a href={project.github} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors" onClick={e => e.stopPropagation()}>
-                                    <Github className="w-5 h-5" />
-                                </a>
-                                {project.link !== '#' && (
-                                    <a href={project.link} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors" title="Open Link" onClick={e => e.stopPropagation()}>
-                                        <ExternalLink className="w-5 h-5" />
+                                <div className="flex gap-3">
+                                    <a href={project.github} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors">
+                                        <Github className="w-5 h-5" />
                                     </a>
-                                )}
+                                    {project.link !== '#' && (
+                                        <a href={project.link} target="_blank" rel="noreferrer" className="text-[#555] hover:text-white transition-colors">
+                                            <ExternalLink className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
-                        <p className="text-[#888] text-sm leading-relaxed mb-6 flex-1">
-                            {project.description}
-                        </p>
+                            <p className="text-[#888] text-sm leading-relaxed mb-6">
+                                {project.description}
+                            </p>
 
-                        <div className="flex gap-2 flex-wrap mt-auto">
-                            {project.tech.map(tech => (
-                                <span key={tech} className="px-2 py-1 rounded bg-[#1a1a1a] text-[#555] font-mono text-[10px] tracking-widest uppercase">
-                                    {tech}
-                                </span>
-                            ))}
+                            <div className="flex gap-2 flex-wrap mt-auto">
+                                {project.tech.map(tech => (
+                                    <span key={tech} className="px-2 py-1 rounded bg-[#1a1a1a] text-[#555] font-mono text-[10px] tracking-widest uppercase">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Live Preview Modal */}
+            {/* Full-screen Preview Modal */}
             {previewUrl && (
                 <div 
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm transition-all duration-300 animate-in fade-in zoom-in-95"
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm"
                     onClick={() => setPreviewUrl(null)}
                 >
                     <div 
@@ -136,9 +141,9 @@ export default function Projects() {
                             </button>
                         </div>
                         
-                        {/* Iframe Container */}
+                        {/* Iframe */}
                         <div className="flex-1 w-full bg-[#0a0a0a] relative">
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
                                 <div className="flex flex-col items-center gap-3">
                                     <div className="w-6 h-6 border-2 border-[#555] border-t-white rounded-full animate-spin"></div>
                                     <span className="text-[#555] font-mono text-sm">Loading Preview...</span>
@@ -146,7 +151,7 @@ export default function Projects() {
                             </div>
                             <iframe 
                                 src={previewUrl} 
-                                className="absolute inset-0 w-full h-full border-0 relative z-10 bg-white"
+                                className="absolute inset-0 w-full h-full border-0 z-10 bg-white"
                                 title="Project Preview"
                                 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                             />
@@ -157,3 +162,4 @@ export default function Projects() {
         </section>
     );
 }
+
