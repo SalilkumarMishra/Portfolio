@@ -3,20 +3,12 @@ import { Github, ExternalLink } from 'lucide-react';
 export default function Projects() {
     const projects = [
         {
-            title: 'Expense Tracker',
-            description: 'A comprehensive Java-based application for tracking and managing personal financial expenditures.',
-            tech: ['Java', 'Spring Boot', 'Postgre SQL'],
-            github: 'https://github.com/shivanshm1726/expense-tracker',
-            link: 'https://track-thecashflow.vercel.app/',
-            icon: 'bg-green-500/10 text-green-500 border-green-500/20'
-        },
-        {
-            title: 'iRetro',
-            description: 'A dedicated PWA retro-styled audio player. Fully offline capable with clean architecture.',
-            tech: ['Next.js', 'React', 'PWA'],
-            github: 'https://github.com/shivanshm1726/iRetro',
-            link: 'https://iretropod.netlify.app/',
-            icon: 'bg-orange-500/10 text-orange-500 border-orange-500/20'
+            title: 'Nexus Health',
+            description: 'A modern, full-stack healthcare platform designed to bridge the gap between patients and medical professionals.',
+            tech: ['Next.js', 'React', 'HealthTech'],
+            github: 'https://github.com/shivanshm1726/NexusHealth',
+            link: 'https://www.nexus-health.me',
+            icon: 'bg-purple-500/10 text-purple-500 border-purple-500/20'
         },
         {
             title: 'TheFleetFly',
@@ -25,6 +17,14 @@ export default function Projects() {
             github: 'https://github.com/shivanshm1726/thefleetfly',
             link: 'https://www.thefleetfly.xyz/',
             icon: 'bg-blue-500/10 text-blue-500 border-blue-500/20'
+        },
+        {
+            title: 'Expense Tracker',
+            description: 'A comprehensive Java-based application for tracking and managing personal financial expenditures.',
+            tech: ['Java', 'Spring Boot', 'Postgre SQL'],
+            github: 'https://github.com/shivanshm1726/expense-tracker',
+            link: 'https://track-thecashflow.vercel.app/',
+            icon: 'bg-green-500/10 text-green-500 border-green-500/20'
         }
     ];
 
