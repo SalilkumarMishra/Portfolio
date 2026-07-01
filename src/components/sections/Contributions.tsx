@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const GITHUB_USERNAME = 'shivanshm1726';
-const LEETCODE_USERNAME = '9SKnOk4KBP';
+const LEETCODE_USERNAME = 'shivanshh26';
 
 type ContributionDay = {
     date: string;
@@ -24,9 +24,9 @@ async function fetchGitHubContributions(username: string): Promise<{ days: Contr
             for (const day of data.contributions) {
                 const level =
                     day.count === 0 ? 0 :
-                    day.count <= 3 ? 1 :
-                    day.count <= 6 ? 2 :
-                    day.count <= 9 ? 3 : 4;
+                        day.count <= 3 ? 1 :
+                            day.count <= 6 ? 2 :
+                                day.count <= 9 ? 3 : 4;
                 days.push({ date: day.date, count: day.count, level });
                 total += day.count;
             }
@@ -62,9 +62,9 @@ async function fetchLeetCodeSubmissions(username: string): Promise<{ days: Contr
             const count: number = calendar[ts] || 0;
             const level =
                 count === 0 ? 0 :
-                count <= 2 ? 1 :
-                count <= 5 ? 2 :
-                count <= 8 ? 3 : 4;
+                    count <= 2 ? 1 :
+                        count <= 5 ? 2 :
+                            count <= 8 ? 3 : 4;
             days.push({ date: d.toISOString().split('T')[0], count, level });
         }
 
@@ -240,21 +240,19 @@ export default function Contributions() {
                 <div className="flex items-center gap-0 rounded-lg overflow-hidden border border-[#333]">
                     <button
                         onClick={() => setTab('github')}
-                        className={`px-5 py-2 text-xs font-mono tracking-widest uppercase transition-colors ${
-                            isGithub
-                                ? 'bg-[#1a1a1a] text-[#4f8fff]'
-                                : 'bg-transparent text-[#555] hover:text-white'
-                        }`}
+                        className={`px-5 py-2 text-xs font-mono tracking-widest uppercase transition-colors ${isGithub
+                            ? 'bg-[#1a1a1a] text-[#4f8fff]'
+                            : 'bg-transparent text-[#555] hover:text-white'
+                            }`}
                     >
                         Github
                     </button>
                     <button
                         onClick={() => setTab('leetcode')}
-                        className={`px-5 py-2 text-xs font-mono tracking-widest uppercase transition-colors ${
-                            !isGithub
-                                ? 'bg-[#1a1a1a] text-[#ffa116]'
-                                : 'bg-transparent text-[#555] hover:text-white'
-                        }`}
+                        className={`px-5 py-2 text-xs font-mono tracking-widest uppercase transition-colors ${!isGithub
+                            ? 'bg-[#1a1a1a] text-[#ffa116]'
+                            : 'bg-transparent text-[#555] hover:text-white'
+                            }`}
                     >
                         Leetcode
                     </button>
