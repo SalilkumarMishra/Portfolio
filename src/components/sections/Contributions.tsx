@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const GITHUB_USERNAME = 'shivanshm1726';
-const LEETCODE_USERNAME = 'shivanshh26';
+const GITHUB_USERNAME = 'SalilkumarMishra';
+const LEETCODE_USERNAME = 'salilmishra4455'; // fallback, may need actual username
 
 type ContributionDay = {
     date: string;

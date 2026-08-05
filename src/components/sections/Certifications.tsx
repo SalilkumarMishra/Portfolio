@@ -3,25 +3,25 @@ import { ExternalLink, Award } from 'lucide-react';
 export default function Certifications() {
     const certifications = [
         {
-            title: 'Oracle Cloud Infrastructure and Fundamentals',
-            issuer: 'ORACLE',
-            description: 'Gained comprehensive knowledge of Oracle Cloud Infrastructure core services, architecture, and security, demonstrating proficiency in cloud fundamentals.',
-            link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=B102F8AFE162D6C1551C27F229E5237E8A24E7F85BDA0BB74F19F4603053F9AF',
-            icon: 'bg-red-500/10 text-red-500 border-red-500/20'
+            title: 'Advanced DSA & System Design',
+            issuer: 'Programming Pathshala | August 2025',
+            description: 'Completed rigorous training in advanced Data Structures, Algorithms, and System Design concepts. Focused on solving complex computational problems and designing scalable software architectures.',
+            link: 'https://drive.google.com/file/d/1TM6DSjp66Az4amZ49Ith6T2HLX4KqQa-/view?usp=sharing',
+            icon: 'bg-purple-500/10 text-purple-500 border-purple-500/20'
         },
         {
-            title: 'DSA in Java',
-            issuer: 'Cipher Schools',
-            description: 'Mastered fundamental and advanced Data Structures and Algorithms using Java, focusing on problem-solving, optimization, and logic building.',
-            link: 'https://www.cipherschools.com/certificate/preview?id=687bf9e606ffe76122762726',
+            title: 'Data Structures & Algorithms – Self Paced',
+            issuer: 'GeeksforGeeks | July 2025',
+            description: 'Mastered core data structures and algorithmic paradigms through comprehensive learning. Strengthened problem-solving skills and optimized code performance.',
+            link: 'https://www.geeksforgeeks.org/certificate/2b2b043347d803c4b7079748a4955ed8',
+            icon: 'bg-green-500/10 text-green-500 border-green-500/20'
+        },
+        {
+            title: 'Introduction to Hardware and Operating Systems',
+            issuer: 'Coursera | September 2024',
+            description: 'Gained a solid foundation in computer hardware components, system architecture, and operating system principles, including process management and memory allocation.',
+            link: 'https://www.coursera.org/account/accomplishments/verify/AFA9VHME47Z2',
             icon: 'bg-blue-500/10 text-blue-500 border-blue-500/20'
-        },
-        {
-            title: 'Google Cloud Big Data and Machine Learning Fundamentals',
-            issuer: 'Google & Coursera',
-            description: 'Explored big data processing capabilities and machine learning on GCP, learning to build data pipelines and deploy machine learning models.',
-            link: 'https://coursera.org/share/b6087281e7fd3bef6eb20f1a72051440',
-            icon: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20'
         }
     ];
 

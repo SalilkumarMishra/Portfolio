@@ -6,28 +6,20 @@ export default function Projects() {
 
     const projects = [
         {
-            title: 'Nexus Health',
-            description: 'A modern, full-stack healthcare platform designed to bridge the gap between patients and medical professionals.',
-            tech: ['Next.js', 'React', 'HealthTech'],
-            github: 'https://github.com/shivanshm1726/NexusHealth',
-            link: 'https://www.nexus-health.me',
+            title: 'SpreeWise',
+            description: 'SpreeWise is a Splitwise-inspired expense management platform built to simplify shared finances for groups. It enables users to create groups, manage memberships, record shared expenses, settle balances, import expenses through CSV files, and handle multi-currency transactions. The application focuses on scalable backend architecture, clean user experience, and accurate expense settlement.',
+            tech: ['React', 'TypeScript', 'Django', 'Django REST Framework', 'PostgreSQL', 'Tailwind CSS', 'Vite'],
+            github: 'https://github.com/SalilkumarMishra/spreewise',
+            link: 'https://spreewise-xi.vercel.app/login',
             icon: 'bg-purple-500/10 text-purple-500 border-purple-500/20'
         },
         {
-            title: 'TheFleetFly',
-            description: 'A robust fleet management solution designed to handle and orchestrate vehicle tracking logistics.',
-            tech: ['React', 'Node.js', 'Logistics'],
-            github: 'https://github.com/shivanshm1726/thefleetfly',
-            link: 'https://www.thefleetfly.xyz/',
+            title: 'NutriNest',
+            description: 'NutriNest is a modern full-stack e-commerce platform focused on healthy food products. It provides secure authentication, product browsing, shopping cart functionality, order management, Stripe payment integration, and a responsive user interface designed to deliver a seamless shopping experience across devices.',
+            tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Stripe', 'Tailwind CSS'],
+            github: 'https://github.com/SalilkumarMishra/NUTRINEST',
+            link: 'https://nutrinest-frontend.vercel.app/',
             icon: 'bg-blue-500/10 text-blue-500 border-blue-500/20'
-        },
-        {
-            title: 'Expense Tracker',
-            description: 'A comprehensive Java-based application for tracking and managing personal financial expenditures.',
-            tech: ['Java', 'Spring Boot', 'Postgre SQL'],
-            github: 'https://github.com/shivanshm1726/expense-tracker',
-            link: 'https://track-thecashflow.vercel.app/',
-            icon: 'bg-green-500/10 text-green-500 border-green-500/20'
         }
     ];
 
@@ -43,7 +35,7 @@ export default function Projects() {
                     <div key={i} className="card-bg overflow-hidden group">
                         {/* Site Preview Thumbnail */}
                         {project.link !== '#' && (
-                            <div 
+                            <div
                                 className="relative w-full h-[220px] overflow-hidden border-b border-[#222222] cursor-pointer"
                                 onClick={() => setPreviewUrl(project.link)}
                             >
@@ -113,11 +105,11 @@ export default function Projects() {
 
             {/* Full-screen Preview Modal */}
             {previewUrl && (
-                <div 
+                <div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm"
                     onClick={() => setPreviewUrl(null)}
                 >
-                    <div 
+                    <div
                         className="relative w-full max-w-6xl h-[85vh] bg-[#121212] border border-[#333] rounded-2xl overflow-hidden shadow-2xl shadow-black/50 flex flex-col"
                         onClick={e => e.stopPropagation()}
                     >
@@ -133,14 +125,14 @@ export default function Projects() {
                                     <span className="text-xs font-mono text-[#888]">{previewUrl}</span>
                                 </div>
                             </div>
-                            <button 
-                                onClick={() => setPreviewUrl(null)} 
+                            <button
+                                onClick={() => setPreviewUrl(null)}
                                 className="text-[#888] hover:text-white bg-[#222] hover:bg-[#333] p-1 rounded-md transition-colors cursor-pointer"
                             >
                                 <X className="w-4 h-4" />
                             </button>
                         </div>
-                        
+
                         {/* Iframe */}
                         <div className="flex-1 w-full bg-[#0a0a0a] relative">
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -149,8 +141,8 @@ export default function Projects() {
                                     <span className="text-[#555] font-mono text-sm">Loading Preview...</span>
                                 </div>
                             </div>
-                            <iframe 
-                                src={previewUrl} 
+                            <iframe
+                                src={previewUrl}
                                 className="absolute inset-0 w-full h-full border-0 z-10 bg-white"
                                 title="Project Preview"
                                 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"

@@ -13,7 +13,7 @@ export default function Contact() {
                 </div>
 
                 <a 
-                    href="mailto:shivanshm665@gmail.com" 
+                    href="mailto:salilmishra249@gmail.com" 
                     className="inline-flex flex-row items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium text-sm transition-transform hover:scale-105 duration-300"
                 >
                     <Mail className="w-4 h-4" /> Say Hello

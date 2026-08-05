@@ -22,15 +22,15 @@ export default function Education() {
 
                 {/* School */}
                 <div className="card-bg p-6">
-                    <h3 className="text-white font-semibold text-lg mb-3">Rani Laxmi Bai Memorial School</h3>
+                    <h3 className="text-white font-semibold text-lg mb-3">St Peter's School, Raebareli</h3>
                     <ul className="space-y-2">
                         <li className="flex items-center gap-2 text-[#888] font-mono text-sm">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#555]"></span>
-                            Higher Secondary (12th): 73%
+                            Higher Secondary (12th): 71%
                         </li>
                         <li className="flex items-center gap-2 text-[#888] font-mono text-sm">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#555]"></span>
-                            Secondary School (10th): 93%
+                            Secondary School (10th): 79%
                         </li>
                     </ul>
                 </div>

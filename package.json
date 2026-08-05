@@ -1,5 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "salil-mishra-portfolio",
+  "author": "Salil Mishra",
+  "description": "Portfolio of Salil Mishra - Software Engineer | Full Stack Developer | UI/UX Designer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
